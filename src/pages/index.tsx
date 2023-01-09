@@ -8,6 +8,7 @@ import { Item } from "./types/item";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Filtros from "./components/Filtros";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const Home: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -41,44 +42,90 @@ const Home: NextPage = () => {
           <Banner bg={["bg-mobile-light.jpg", "bg-desktop-light.jpg"]} />
         ) : (
           <Banner bg={["bg-mobile-dark.jpg", "bg-desktop-dark.jpg"]} />
-        )}
-        <Box>
-          {colorMode === "light" ? (
-            <VStack>
-              <AddTodo onEnter={handleAddTodo} />
-              <VStack
-                align="stretch"
-                divider={<StackDivider borderColor="gray.100" />}
-                borderRadius="sm"
-                w="50%"
-                bg={"#fafafa"}
-              >
-                {list.map((item, index) => (
-                  <TodoList key={index} item={item} />
-                ))}
+        )}{" "}
+        <DragDropContext
+          onDragEnd={(...pross) => {
+            console.log(pross);
+          }}
+        >
+          <Box>
+            {colorMode === "light" ? (
+              <VStack>
+                <AddTodo onEnter={handleAddTodo} />
+                <VStack
+                  align="stretch"
+                  divider={<StackDivider borderColor="gray.100" />}
+                  borderRadius="sm"
+                  w="50%"
+                  bg={"#fafafa"}
+                >
+                  <Droppable droppableId="droppable-1">
+                    {(provided, _) => (
+                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {list.map((item, index) => (
+                          <Draggable
+                            key={item.id}
+                            draggableId={"draggable-" + item.id}
+                            index={index}
+                          >
+                            {(provided, _) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                              >
+                                <TodoList key={index} item={item} />
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                      </div>
+                    )}
+                  </Droppable>
+                </VStack>
                 <Filtros />
+                <Footer />
               </VStack>
-              <Footer />
-            </VStack>
-          ) : (
-            <VStack>
-              <AddTodo onEnter={handleAddTodo} />
-              <VStack
-                align="stretch"
-                divider={<StackDivider borderColor="#4d5066" />}
-                borderRadius="sm"
-                w="50%"
-                bg={"#25273c"}
-              >
-                {list.map((item, index) => (
-                  <TodoList key={index} item={item} />
-                ))}
+            ) : (
+              <VStack>
+                <AddTodo onEnter={handleAddTodo} />
+                <VStack
+                  align="stretch"
+                  divider={<StackDivider borderColor="#4d5066" />}
+                  borderRadius="sm"
+                  w="50%"
+                  bg={"#25273c"}
+                >
+                 <Droppable droppableId="droppable-1">
+                    {(provided, _) => (
+                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {list.map((item, index) => (
+                          <Draggable
+                            key={item.id}
+                            draggableId={"draggable-" + item.id}
+                            index={index}
+                          >
+                            {(provided, _) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                              >
+                                <TodoList key={index} item={item} />
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                      </div>
+                    )}
+                  </Droppable>
+                </VStack>
                 <Filtros />
+                <Footer />
               </VStack>
-              <Footer />
-            </VStack>
-          )}
-        </Box>
+            )}
+          </Box>
+        </DragDropContext>
       </main>
     </div>
   );
