@@ -1,19 +1,12 @@
 import React from "react";
 import {
   Box,
-  Text,
   Flex,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
   useColorMode,
-  Center,
+  Heading,
+  IconButton,
 } from "@chakra-ui/react";
+import Head from "next/head";
 
 interface BannerProps {
   bg: string[];
@@ -22,24 +15,29 @@ interface BannerProps {
 export function Banner(props: BannerProps) {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box>
+    <Box
+      height={["200", "45vh"]}
+      overflow={"hidden"}
+      backgroundRepeat="no-repeat"
+      backgroundSize="100%"
+      objectFit="cover"
+      backgroundImage={props.bg}
+    >
       <Flex
         height={["200", "45vh"]}
-        overflow={"hidden"}
-        backgroundRepeat="no-repeat"
-        backgroundSize="100%"
-        objectFit="cover"
-        backgroundImage={props.bg}
-        alignItems="center"
+        alignItems={'center'}
+        justifyContent="center"
       >
-        <Text textColor={"white"}>TODO</Text>
-        <Button onClick={toggleColorMode} bg="none">
+        <Heading pr={'30%'} textColor={"white"} as="b" fontSize={["20", "40"]}>
+          T O D O
+        </Heading>
+        <IconButton onClick={toggleColorMode} bg="" isRound="true">
           {colorMode === "light" ? (
             <img src="/icon-moon.svg" />
           ) : (
             <img src="/icon-sun.svg" />
           )}
-        </Button>
+        </IconButton>
       </Flex>
     </Box>
   );
