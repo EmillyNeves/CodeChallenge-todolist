@@ -6,7 +6,6 @@ import {
   Heading,
   IconButton,
 } from "@chakra-ui/react";
-import Head from "next/head";
 
 interface BannerProps {
   bg: string[];

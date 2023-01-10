@@ -59,7 +59,7 @@ const Home: NextPage = () => {
                   w="50%"
                   bg={"#fafafa"}
                 >
-                  <Droppable droppableId="droppable-1">
+                  <Droppable droppableId="droppable-">
                     {(provided, _) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
                   w="50%"
                   bg={"#25273c"}
                 >
-                 <Droppable droppableId="droppable-1">
+                 <Droppable droppableId="droppable-">
                     {(provided, _) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (
