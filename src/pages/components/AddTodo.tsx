@@ -24,7 +24,7 @@ export const AddTodo = ({ onEnter }: Props) => {
           bg={"#fafafa"}
           fontSize={18}
           borderRadius="sm"
-          w="50%"
+          w={["80%", "50%"]}
           mb={5}
           p={4}
           pl={20}
@@ -40,7 +40,7 @@ export const AddTodo = ({ onEnter }: Props) => {
           bg={"#25273c"}
           fontSize={18}
           borderRadius="sm"
-          w="50%"
+          w={["80%", "50%"]}
           mb={5}
           p={4}
           pl={20}

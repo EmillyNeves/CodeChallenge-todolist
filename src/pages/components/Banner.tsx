@@ -23,11 +23,11 @@ export function Banner(props: BannerProps) {
       backgroundImage={props.bg}
     >
       <Flex
-        height={["200", "45vh"]}
+        height={["150", "25vh"]}
         alignItems={'center'}
         justifyContent="center"
       >
-        <Heading pr={'30%'} textColor={"white"} as="b" fontSize={["20", "40"]}>
+        <Heading pr={["40%", "35%"]} textColor={"white"} as="b" fontSize={["32", "40"]}>
           T O D O
         </Heading>
         <IconButton onClick={toggleColorMode} bg="" isRound="true">

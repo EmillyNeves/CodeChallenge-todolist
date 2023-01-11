@@ -1,4 +1,4 @@
-import { Box, useColorMode, VStack, StackDivider } from "@chakra-ui/react";
+import { Box, useColorMode, VStack, StackDivider, list } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Banner } from "./components/Banner";
@@ -24,6 +24,7 @@ const Home: NextPage = () => {
     });
     setList(newTodo);
   };
+
   return (
     <div>
       <Head>
@@ -44,22 +45,24 @@ const Home: NextPage = () => {
           <Banner bg={["bg-mobile-dark.jpg", "bg-desktop-dark.jpg"]} />
         )}{" "}
         <DragDropContext
-          onDragEnd={(...pross) => {
-            console.log(pross);
+          onDragEnd={(param) => {
+            const srcI = param.source.index;
+            const desI = param.destination?.index;
+            if (desI) list.splice(desI, 0, list.splice(srcI, 1)[0]);
           }}
         >
           <Box>
             {colorMode === "light" ? (
-              <VStack>
+              <VStack mt={["-20", "-170"]}>
                 <AddTodo onEnter={handleAddTodo} />
                 <VStack
                   align="stretch"
                   divider={<StackDivider borderColor="gray.100" />}
                   borderRadius="sm"
-                  w="50%"
+                  w={["80%", "50%"]}
                   bg={"#fafafa"}
                 >
-                  <Droppable droppableId="droppable-">
+                  <Droppable droppableId="droppable-1">
                     {(provided, _) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (
@@ -87,16 +90,16 @@ const Home: NextPage = () => {
                 <Footer />
               </VStack>
             ) : (
-              <VStack>
+              <VStack mt={["-20", "-170"]}>
                 <AddTodo onEnter={handleAddTodo} />
                 <VStack
                   align="stretch"
                   divider={<StackDivider borderColor="#4d5066" />}
                   borderRadius="sm"
-                  w="50%"
+                  w={["80%", "50%"]}
                   bg={"#25273c"}
                 >
-                 <Droppable droppableId="droppable-">
+                  <Droppable droppableId="droppable-2">
                     {(provided, _) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (

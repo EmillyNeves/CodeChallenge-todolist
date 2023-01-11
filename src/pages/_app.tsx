@@ -1,12 +1,20 @@
 import React from "react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
+import { mode } from "@chakra-ui/theme-tools";
 
 const theme = extendTheme({
   fonts: {
     body: "Josefin Sans, sans-serif",
     heading: "Josefin Sans, sans-serif",
     mono: "Josefin Sans, sans-serif",
+  },
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: mode("#e4e5f1", "#161722")(props),
+      },
+    }),
   },
   darkTheme: {
     background: "#161722",
@@ -28,7 +36,7 @@ const theme = extendTheme({
     draggable: "#f9eefe",
     blue: "#3a7bfd",
   },
-})
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
