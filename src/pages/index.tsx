@@ -1,4 +1,10 @@
-import { Box, useColorMode, VStack, StackDivider, list } from "@chakra-ui/react";
+import {
+  Box,
+  useColorMode,
+  VStack,
+  StackDivider,
+  list,
+} from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Banner } from "./components/Banner";
@@ -23,6 +29,14 @@ const Home: NextPage = () => {
       status: false,
     });
     setList(newTodo);
+  };
+
+  const deleteTask = (taskNameToDelete: string): void => {
+    setList(
+      list.filter((list) => {
+        return list.text != taskNameToDelete;
+      })
+    );
   };
 
   return (
@@ -77,7 +91,11 @@ const Home: NextPage = () => {
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                               >
-                                <TodoList key={index} item={item} />
+                                <TodoList
+                                  key={index}
+                                  item={item}
+                                  completeTask={deleteTask}
+                                />
                               </div>
                             )}
                           </Draggable>
@@ -114,7 +132,7 @@ const Home: NextPage = () => {
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                               >
-                                <TodoList key={index} item={item} />
+                                <TodoList key={index} item={item} completeTask={deleteTask} />
                               </div>
                             )}
                           </Draggable>

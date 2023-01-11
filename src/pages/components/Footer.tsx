@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <HStack alignItems={"center"} justifyContent="center">
       {colorMode === "light" ? (
-        <Text color={"#9394a5"} my={10} fontSize={16}>
+        <Text color={"#9394a5"} my={5} fontSize={16}>
           Drag and drop to reorder list
         </Text>
       ) : (
-        <Text color={'#484b6a'} my={10} fontSize={16}>
+        <Text color={'#484b6a'} my={5} fontSize={16}>
           Drag and drop to reorder list
         </Text>
       )}

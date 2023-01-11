@@ -9,6 +9,7 @@ const theme = extendTheme({
     heading: "Josefin Sans, sans-serif",
     mono: "Josefin Sans, sans-serif",
   },
+  
   styles: {
     global: (props) => ({
       body: {

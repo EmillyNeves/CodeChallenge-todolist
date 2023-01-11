@@ -1,21 +1,24 @@
-import { Text, HStack, useColorMode } from "@chakra-ui/react";
+import { Text, HStack, useColorMode, Link } from "@chakra-ui/react";
 import React from "react";
+import { useState } from "react";
+
 
 const Filtros = () => {
+  const [filtros,setFiltros] = useState<'all'|'active'|'completed'>('all');
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <HStack my={2} alignItems={"center"} justifyContent="center">
       {colorMode === "light" ? (
         <>
-          <Text color={"#9394a5"} fontSize={18}>
+          <Link onClick={()=>setFiltros('all')}  color={"#9394a5"} fontSize={18}>
             All
-          </Text>
-          <Text color={"#9394a5"} fontSize={18}>
+          </Link>
+          <Link onClick={()=>setFiltros('active')} color={"#9394a5"} fontSize={18}>
             Active
-          </Text>
-          <Text color={"#9394a5"} fontSize={18}>
+          </Link>
+          <Link onClick={()=>setFiltros('all')} color={"#9394a5"} fontSize={18}>
             Completed
-          </Text>
+          </Link>
         </>
       ) : (
         <>
