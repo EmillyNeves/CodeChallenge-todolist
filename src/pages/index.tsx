@@ -4,6 +4,9 @@ import {
   VStack,
   StackDivider,
   list,
+  Divider,
+  Show,
+  Stack,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -57,7 +60,7 @@ const Home: NextPage = () => {
           <Banner bg={["bg-mobile-light.jpg", "bg-desktop-light.jpg"]} />
         ) : (
           <Banner bg={["bg-mobile-dark.jpg", "bg-desktop-dark.jpg"]} />
-        )}{" "}
+        )}
         <DragDropContext
           onDragEnd={(param) => {
             const srcI = param.source.index;
@@ -71,14 +74,13 @@ const Home: NextPage = () => {
                 <AddTodo onEnter={handleAddTodo} />
                 <VStack
                   align="stretch"
-                  divider={<StackDivider borderColor="gray.100" />}
                   borderRadius="sm"
                   w={["80%", "50%"]}
                   bg={"#fafafa"}
                 >
                   <Droppable droppableId="droppable-1">
                     {(provided, _) => (
-                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <Stack divider={<StackDivider w={'100%'} borderWidth= "1px" borderColor="#d2d3db" />} ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (
                           <Draggable
                             key={item.id}
@@ -100,11 +102,17 @@ const Home: NextPage = () => {
                             )}
                           </Draggable>
                         ))}
-                      </div>
+                      </Stack>
                     )}
                   </Droppable>
+                  <Show  above='md'>
+                  <Divider  borderWidth= "2px" borderColor="#d2d3db" />
+                    <Filtros />
+                  </Show>
                 </VStack>
-                <Filtros />
+                <Show  below='md'>
+                    <Filtros />
+                  </Show>
                 <Footer />
               </VStack>
             ) : (
@@ -112,14 +120,14 @@ const Home: NextPage = () => {
                 <AddTodo onEnter={handleAddTodo} />
                 <VStack
                   align="stretch"
-                  divider={<StackDivider borderColor="#4d5066" />}
+                  divider={<StackDivider w='100%' borderColor="#4d5066" />}
                   borderRadius="sm"
                   w={["80%", "50%"]}
                   bg={"#25273c"}
                 >
                   <Droppable droppableId="droppable-2">
                     {(provided, _) => (
-                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <Stack divider={<StackDivider w={'100%'} borderWidth= "1px" borderColor="#4d5066" />} ref={provided.innerRef} {...provided.droppableProps}>
                         {list.map((item, index) => (
                           <Draggable
                             key={item.id}
@@ -132,12 +140,16 @@ const Home: NextPage = () => {
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                               >
-                                <TodoList key={index} item={item} completeTask={deleteTask} />
+                                <TodoList
+                                  key={index}
+                                  item={item}
+                                  completeTask={deleteTask}
+                                />
                               </div>
                             )}
                           </Draggable>
                         ))}
-                      </div>
+                      </Stack>
                     )}
                   </Droppable>
                 </VStack>

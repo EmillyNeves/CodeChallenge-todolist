@@ -7,7 +7,7 @@ const Filtros = () => {
   const [filtros,setFiltros] = useState<'all'|'active'|'completed'>('all');
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <HStack my={2} alignItems={"center"} justifyContent="center">
+    <HStack   alignItems={"center"} justifyContent="center">
       {colorMode === "light" ? (
         <>
           <Link onClick={()=>setFiltros('all')}  color={"#9394a5"} fontSize={18}>
