@@ -1,36 +1,74 @@
-import { Text, HStack, useColorMode, Link } from "@chakra-ui/react";
+import {
+  Text,
+  Show,
+  HStack,
+  useColorMode,
+  Link,
+  Stack,
+} from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 
-
 const Filtros = () => {
-  const [filtros,setFiltros] = useState<'all'|'active'|'completed'>('all');
+  const [filtros, setFiltros] = useState<"all" | "active" | "completed">("all");
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <HStack   alignItems={"center"} justifyContent="center">
+    <HStack alignItems={"center"} justifyContent="center">
       {colorMode === "light" ? (
         <>
-          <Link onClick={()=>setFiltros('all')}  color={"#9394a5"} fontSize={18}>
+          <Stack>
+            <Show above="md">
+              <Text>items left</Text>
+            </Show>{" "}
+          </Stack>
+          <Link
+            onClick={() => setFiltros("all")}
+            color={"#9394a5"}
+            fontSize={16}
+          >
             All
           </Link>
-          <Link onClick={()=>setFiltros('active')} color={"#9394a5"} fontSize={18}>
+          <Link
+            onClick={() => setFiltros("active")}
+            color={"#9394a5"}
+            fontSize={16}
+          >
             Active
           </Link>
-          <Link onClick={()=>setFiltros('all')} color={"#9394a5"} fontSize={18}>
+          <Link
+            onClick={() => setFiltros("all")}
+            color={"#9394a5"}
+            fontSize={16}
+          >
             Completed
           </Link>
+          <Stack>
+            <Show above="md">
+              <Text>Clear Completed</Text>
+            </Show>{" "}
+          </Stack>
         </>
       ) : (
         <>
-          <Text color={"#484b6a"} fontSize={18}>
+          <Stack>
+            <Show above="md">
+              <Text>items left</Text>
+            </Show>
+          </Stack>
+          <Text color={"#484b6a"} fontSize={16}>
             All
           </Text>
-          <Text color={"#484b6a"} fontSize={18}>
+          <Text color={"#484b6a"} fontSize={16}>
             Active
           </Text>
-          <Text color={"#484b6a"} fontSize={18}>
+          <Text color={"#484b6a"} fontSize={16}>
             Completed
           </Text>
+          <Stack>
+            <Show above="md">
+              <Text>Clear Completed</Text>
+            </Show>{" "}
+          </Stack>
         </>
       )}
     </HStack>

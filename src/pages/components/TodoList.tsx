@@ -11,6 +11,7 @@ import {
   Flex,
   Icon,
 } from "@chakra-ui/react";
+import { CheckboxStyled } from "./Checkbox";
 
 type Props = {
   item: Item;
@@ -21,20 +22,38 @@ export const TodoList = ({ item, completeTask }: Props) => {
   const [isChecked, setIsChecked] = useState(item.status);
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex alignItems={"center"}  >
-      <Checkbox
-        pl={10}
+    <Flex alignItems={"center"}>
+      <CheckboxStyled
+        mr="-8"
+        ml="5"
+        size="lg"
         checked={isChecked}
         onChange={(e) => setIsChecked(e.target.checked)}
+        roundedFull
+        borderColor="gray"
       />
       {isChecked === true ? (
         <>
           {colorMode === "light" ? (
-            <Text  w={"80%"} color={"#9394a5"} fontSize={18} as="s" pl={10} my="4">
+            <Text
+              w={"80%"}
+              color={"#9394a5"}
+              fontSize={18}
+              as="s"
+              pl={10}
+              my="4"
+            >
               {item.text}
             </Text>
           ) : (
-            <Text  w={"80%"} color={"#484b6a"} fontSize={18} as="s" pl={10} my="4">
+            <Text
+              w={"80%"}
+              color={"#484b6a"}
+              fontSize={18}
+              as="s"
+              pl={10}
+              my="4"
+            >
               {item.text}
             </Text>
           )}
@@ -54,11 +73,11 @@ export const TodoList = ({ item, completeTask }: Props) => {
       ) : (
         <>
           {colorMode === "light" ? (
-            <Text  w={"80%"} color={"#484b6a"} fontSize={18} pl={10} my="4">
+            <Text w={"80%"} color={"#484b6a"} fontSize={18} pl={10} my="4">
               {item.text}
             </Text>
           ) : (
-            <Text  w={"80%"}color={"#cacde8"} fontSize={18} pl={10} my="4">
+            <Text w={"80%"} color={"#cacde8"} fontSize={18} pl={10} my="4">
               {item.text}
             </Text>
           )}

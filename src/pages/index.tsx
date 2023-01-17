@@ -106,7 +106,7 @@ const Home: NextPage = () => {
                     )}
                   </Droppable>
                   <Show  above='md'>
-                  <Divider  borderWidth= "2px" borderColor="#d2d3db" />
+                  <Divider  borderWidth= "1px" borderColor="#d2d3db" />
                     <Filtros />
                   </Show>
                 </VStack>
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
               </VStack>
             ) : (
               <VStack mt={["-20", "-170"]}>
-                <AddTodo onEnter={handleAddTodo} />
+                <AddTodo  onEnter={handleAddTodo} />
                 <VStack
                   align="stretch"
                   divider={<StackDivider w='100%' borderColor="#4d5066" />}
