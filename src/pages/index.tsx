@@ -152,8 +152,13 @@ const Home: NextPage = () => {
                       </Stack>
                     )}
                   </Droppable>
+                  <Show  above='md'>
+                    <Filtros />
+                  </Show>
                 </VStack>
-                <Filtros />
+                <Show  below='md'>
+                    <Filtros />
+                  </Show>
                 <Footer />
               </VStack>
             )}
