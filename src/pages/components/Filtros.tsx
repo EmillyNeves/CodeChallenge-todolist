@@ -18,7 +18,7 @@ const Filtros = () => {
         <>
           <Stack>
             <Show above="md">
-              <Text>items left</Text>
+              <Text color={"#9394a5"} >items left</Text>
             </Show>{" "}
           </Stack>
           <Link
@@ -44,7 +44,7 @@ const Filtros = () => {
           </Link>
           <Stack>
             <Show above="md">
-              <Text>Clear Completed</Text>
+              <Text color={"#9394a5"} >Clear Completed</Text>
             </Show>{" "}
           </Stack>
         </>
@@ -52,7 +52,7 @@ const Filtros = () => {
         <>
           <Stack>
             <Show above="md">
-              <Text>items left</Text>
+              <Text color={"#484b6a"} >items left</Text>
             </Show>
           </Stack>
           <Text color={"#484b6a"} fontSize={16}>
@@ -66,7 +66,7 @@ const Filtros = () => {
           </Text>
           <Stack>
             <Show above="md">
-              <Text>Clear Completed</Text>
+              <Text color={"#484b6a"}  >Clear Completed</Text>
             </Show>{" "}
           </Stack>
         </>
