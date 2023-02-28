@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.4.6",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.1",
+    "@chakra-ui/theme-tools": "^2.0.16",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "framer-motion": "^7.10.3",
     "next": "12.2.5",
+    "pullstate": "^1.25.0",
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0"
@@ -27,7 +30,7 @@
     "@typescript-eslint/parser": "^4.5.0",
     "eslint": "7.11.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.14.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-import-helpers": "^1.1.0",
