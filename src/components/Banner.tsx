@@ -35,9 +35,9 @@ export function Banner({ bg }: BannerProps) {
         <IconButton
           icon={
             colorMode === "light" ? (
-              <SunIcon boxSize={5} />
+              <SunIcon boxSize={7} />
             ) : (
-              <MoonIcon boxSize={5} />
+              <MoonIcon boxSize={7} />
             )
           }
           bg="transparent"
