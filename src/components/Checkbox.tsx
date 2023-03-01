@@ -1,6 +1,10 @@
-import { Checkbox } from "@chakra-ui/react";
+import { Checkbox, CheckboxProps } from "@chakra-ui/react";
 
-const controlColor = `linear-gradient(to bottom,  ${'#3a7bfd'} 20%,${'#854cdb'} 80%)`;
+const controlColor = `linear-gradient(to bottom,  ${"#3a7bfd"} 20%,${"#854cdb"} 80%)`;
+
+interface ClassesProps extends CheckboxProps {
+  fullRounded?: boolean;
+}
 
 const defaultClasses = ({ radius = "1px", controlRadius = "1px" }) => {
   return {
@@ -8,10 +12,10 @@ const defaultClasses = ({ radius = "1px", controlRadius = "1px" }) => {
     px: "12px",
     w: "fit-content",
     _checked: {
-        color:'pink',
+      color: "pink",
       h: "40px",
       px: "12px",
-      borderRadius: radius
+      borderRadius: radius,
     },
     "span[class*='checkbox__control']:not([data-disabled])": {
       borderRadius: controlRadius,
@@ -27,35 +31,34 @@ const defaultClasses = ({ radius = "1px", controlRadius = "1px" }) => {
         height: "0px",
         bg: `transparent`,
         borderRadius: radius,
-        zIndex: -1
-      }
+        zIndex: -1,
+      },
     },
     _hover: {
       "span[class*='checkbox__control']:not([data-disabled])": {
         _after: {
           width: "40px",
           height: "40px",
-        }
-      }
-    }
+        },
+      },
+    },
   };
 };
 
 export const CheckboxStyled = ({
   children,
   rounded,
-  roundedFull,
+  fullRounded,
   ...props
-}) => {
+}: ClassesProps) => {
   let classes = defaultClasses({});
 
-  if (roundedFull) {
+  if (fullRounded) {
     classes = defaultClasses({ radius: "99px", controlRadius: "99px" });
   }
 
-
   return (
-    <Checkbox iconColor='white' sx={classes} {...props}>
+    <Checkbox iconColor="white" sx={classes} {...props}>
       {children}
     </Checkbox>
   );
