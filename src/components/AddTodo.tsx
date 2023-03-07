@@ -1,6 +1,7 @@
 import React, { useState, KeyboardEvent } from "react";
 
-import { Input, useColorMode } from "@chakra-ui/react";
+import { HStack, Input, useColorMode } from "@chakra-ui/react";
+import { CheckboxStyled } from "./Checkbox";
 
 type Props = {
   onEnter: (todoItem: string) => void;
@@ -19,7 +20,7 @@ export const AddTodo = ({ onEnter }: Props) => {
 
   return (
     <>
-      <Input
+      <HStack
         bg={
           colorMode === "light" ? "light.listBackground" : "dark.listBackground"
         }
@@ -28,14 +29,23 @@ export const AddTodo = ({ onEnter }: Props) => {
         w={["80%", "60%"]}
         mb={5}
         p={4}
-        pl={20}
-        variant="unstyled"
-        placeholder="Adicionar nova tarefa ..."
-        size="lg"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        onKeyUp={handleKeyUp}
-      />
+        pl={10}
+      >
+        <CheckboxStyled
+          size="lg"
+          isChecked={false}
+          fullRounded
+          borderColor="gray"
+        />
+        <Input
+          variant="unstyled"
+          placeholder="Adicionar nova tarefa ..."
+          size="lg"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          onKeyUp={handleKeyUp}
+        />
+      </HStack>
     </>
   );
 };
