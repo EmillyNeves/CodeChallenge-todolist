@@ -13,8 +13,7 @@ export function Banner({ bg }: BannerProps) {
     <Box
       overflow="hidden"
       backgroundRepeat="no-repeat"
-      backgroundSize="100%"
-      objectFit="cover"
+      backgroundSize="cover"
       backgroundImage={bg}
       marginBottom={["10", "5"]}
     >
@@ -28,7 +27,7 @@ export function Banner({ bg }: BannerProps) {
           bg="transparent"
           textColor="white"
           as="b"
-          fontSize={["32", "40"]}
+          fontSize={["28", "40"]}
         >
           T O D O
         </Heading>

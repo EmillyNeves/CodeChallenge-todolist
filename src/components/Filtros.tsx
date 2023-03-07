@@ -9,6 +9,7 @@ import {
   useColorMode,
   Stack,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import { useStoreState } from "pullstate";
 
@@ -34,25 +35,32 @@ const Filtros = () => {
   const uncompletedTasks = list.filter((item) => !item.status);
 
   const remainingTasks = () => {
-    if (uncompletedTasks.length === 0) return "Nenhuma tarefa restante";
+    if (uncompletedTasks.length === 0) return "Sem tarefas restantes";
     if (uncompletedTasks.length === 1) return "tarefa restante";
     return "tarefas restantes";
   };
 
   return (
-    <HStack alignItems="center" justifyContent="space-between" px={5}>
+    <HStack alignItems="center" justifyContent="space-around" gap={3}>
       <>
         <Stack>
           <Show above="md">
-            <HStack textAlign="center">
+            <Flex
+              flexDir="row"
+              flexWrap="wrap"
+              align="center"
+              justify="center"
+              textAlign="center"
+              gap={2}
+            >
               {uncompletedTasks.length !== 0 && (
                 <Text>{uncompletedTasks.length}</Text>
               )}
               <Text color={textColor}>{remainingTasks()}</Text>
-            </HStack>
+            </Flex>
           </Show>
         </Stack>
-        <HStack gap={3}>
+        <HStack gap={3} m="0 !important">
           <Button
             variant="link"
             onClick={() => setFilter("all")}
@@ -79,16 +87,21 @@ const Filtros = () => {
           </Button>
         </HStack>
 
-        <Stack>
+        <Stack h="100%">
           <Show above="md">
-            <Button
-              variant="link"
-              textAlign="center"
-              color={textColor}
+            <Text
+              as="button"
               onClick={deleteCompletedTasks}
+              color={textColor}
+              _hover={{
+                color: "blue.300",
+              }}
+              _active={{
+                color: "blue.500",
+              }}
             >
               Limpar concluídas
-            </Button>
+            </Text>
           </Show>
         </Stack>
       </>

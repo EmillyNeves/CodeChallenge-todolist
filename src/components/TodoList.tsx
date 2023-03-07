@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { IItem } from "@/@types/item";
 import { CloseIcon } from "@chakra-ui/icons";
@@ -16,9 +16,9 @@ export const TodoList = ({ item }: TodoProps) => {
   const textColor = colorMode === "light" ? "light.primary" : "dark.primary";
 
   return (
-    <Tr alignItems="center" justifyItems="center" w="100%" h="60px">
+    <Tr alignItems="center" justifyItems="center" h="60px">
       <HStack w="100%" justify="space-between" px={10}>
-        <HStack h="60px">
+        <HStack minH="60px">
           <CheckboxStyled
             size="lg"
             isChecked={item.status}
@@ -27,10 +27,11 @@ export const TodoList = ({ item }: TodoProps) => {
             borderColor="gray"
           />
           <Text
-            w="80%"
+            w="100%"
             color={textColor}
             fontSize={18}
             textDecoration={item.status ? "line-through" : "none"}
+            wordBreak="break-all"
           >
             {item.text}
           </Text>

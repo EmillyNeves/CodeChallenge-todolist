@@ -3,7 +3,7 @@ import React from "react";
 import { Text, HStack, useColorMode } from "@chakra-ui/react";
 
 const Footer = () => {
-  const { colorMode} = useColorMode();
+  const { colorMode } = useColorMode();
   const secondary =
     colorMode === "light" ? "light.secondary" : "dark.secondary";
   return (

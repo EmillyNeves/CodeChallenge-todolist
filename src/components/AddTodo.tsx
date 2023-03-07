@@ -1,7 +1,7 @@
 import React, { useState, KeyboardEvent } from "react";
 
-import { HStack, Input, useColorMode } from "@chakra-ui/react";
-import { CheckboxStyled } from "./Checkbox";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { HStack, IconButton, Input, useColorMode } from "@chakra-ui/react";
 
 type Props = {
   onEnter: (todoItem: string) => void;
@@ -12,40 +12,41 @@ export const AddTodo = ({ onEnter }: Props) => {
   const [inputText, setInputText] = useState("");
 
   const handleKeyUp = (e: KeyboardEvent) => {
-    if (e.keyCode === 13 && inputText !== "") {
+    if (e.code === "Enter" && inputText !== "") {
       onEnter(inputText);
       setInputText("");
     }
   };
 
   return (
-    <>
-      <HStack
-        bg={
-          colorMode === "light" ? "light.listBackground" : "dark.listBackground"
-        }
+    <HStack
+      w={["80%", "60%"]}
+      h="60px"
+      mb={5}
+      alignItems="center"
+      bg={
+        colorMode === "light" ? "light.listBackground" : "dark.listBackground"
+      }
+      py={4}
+      px={12}
+    >
+      <Input
         fontSize={18}
         borderRadius="sm"
-        w={["80%", "60%"]}
-        mb={5}
-        p={4}
-        pl={10}
-      >
-        <CheckboxStyled
-          size="lg"
-          isChecked={false}
-          fullRounded
-          borderColor="gray"
-        />
-        <Input
-          variant="unstyled"
-          placeholder="Adicionar nova tarefa ..."
-          size="lg"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          onKeyUp={handleKeyUp}
-        />
-      </HStack>
-    </>
+        variant="unstyled"
+        placeholder="Adicionar nova tarefa ..."
+        size="lg"
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        onKeyUp={handleKeyUp}
+      />
+      <IconButton
+        display={inputText === "" ? "none" : "flex"}
+        size="sm"
+        aria-label="Adicionar tarefa"
+        icon={<ArrowForwardIcon boxSize={6} />}
+        onClick={() => handleKeyUp({ code: "Enter" } as KeyboardEvent)}
+      />
+    </HStack>
   );
 };
