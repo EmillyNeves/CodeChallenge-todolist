@@ -17,7 +17,6 @@ import {
   Box,
   useColorMode,
   VStack,
-  Divider,
   Show,
   Text,
   Table,
@@ -82,9 +81,17 @@ const Home: NextPage = () => {
               bg={background}
             >
               {list.length === 0 || filteredList.length === 0 ? (
-                <VStack h="60px" w="100%" justify="center" borderBottom="2px solid" borderColor={borderColor}>
+                <VStack
+                  h="60px"
+                  w="100%"
+                  justify="center"
+                  borderBottom="2px solid"
+                  borderColor={borderColor}
+                >
                   <Text
                     fontSize="xl"
+                    textAlign="center"
+                    px={2}
                     color={
                       colorMode === "light"
                         ? "blackAlpha.300"
@@ -138,7 +145,7 @@ const Home: NextPage = () => {
                 <Filtros />
               </Show>
             </VStack>
-            <Show below="md">
+            <Show breakpoint="(max-width: 767px)">
               <Filtros />
             </Show>
             <Footer />

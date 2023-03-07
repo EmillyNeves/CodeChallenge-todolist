@@ -41,13 +41,11 @@
       "error",
       {
         "endOfLine": "auto",
-        "tabWidth": "off"
+        "tabWidth": 2,
+        "indent": 2
       }
     ],
-    "indent": [
-      "error",
-      2
-    ],
+   
     "react/no-unknown-property": [
       2,
       {
