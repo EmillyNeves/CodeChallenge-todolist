@@ -11,7 +11,7 @@ export const AddTodo = ({ onEnter }: Props) => {
   const [inputText, setInputText] = useState("");
 
   const handleKeyUp = (e: KeyboardEvent) => {
-    if (e.code === "Enter" && inputText !== "") {
+    if (e.keyCode === 13 && inputText !== "") {
       onEnter(inputText);
       setInputText("");
     }
