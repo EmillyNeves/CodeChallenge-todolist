@@ -2,7 +2,7 @@
 
 Trata-se de uma aplicação de organização de tarefas.
 
-Site: http://code-challenge-todolist-j1ej37yhe-emillyneves.vercel.app/
+Site: <img src="https://code-challenge-todolist.vercel.app/favicon.ico" width="14px" /> [TODO App](https://code-challenge-todolist.vercel.app/)
 
 ### Feito com
 
