@@ -89,7 +89,17 @@ const Filtros = () => {
 
         <Stack h="100%">
           <Show above="md">
-            <Text as="button" onClick={deleteCompletedTasks} color={textColor}>
+            <Text
+              as="button"
+              onClick={deleteCompletedTasks}
+              color={textColor}
+              _hover={{
+                color: "blue.300",
+              }}
+              _active={{
+                color: "blue.500",
+              }}
+            >
               Limpar concluídas
             </Text>
           </Show>
